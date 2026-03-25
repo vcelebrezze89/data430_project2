@@ -1,0 +1,42 @@
+[2026-03-24T19:02:51.193+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-24T19:02:51.246+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_spark_pipeline.spark_cleanse_daily_sales manual__2026-03-24T19:00:31.982886+00:00 [queued]>
+[2026-03-24T19:02:51.255+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_spark_pipeline.spark_cleanse_daily_sales manual__2026-03-24T19:00:31.982886+00:00 [queued]>
+[2026-03-24T19:02:51.255+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2026-03-24T19:02:51.266+0000] {taskinstance.py:2327} INFO - Executing <Task(BashOperator): spark_cleanse_daily_sales> on 2026-03-24 19:00:31.982886+00:00
+[2026-03-24T19:02:51.282+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=562) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-24T19:02:51.277+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_spark_pipeline', 'spark_cleanse_daily_sales', 'manual__2026-03-24T19:00:31.982886+00:00', '--job-id', '37', '--raw', '--subdir', 'DAGS_FOLDER/etl_spark_pipeline.py', '--cfg-path', '/tmp/tmpm83n7o0a']
+[2026-03-24T19:02:51.283+0000] {standard_task_runner.py:63} INFO - Started process 567 to run task
+[2026-03-24T19:02:51.283+0000] {standard_task_runner.py:91} INFO - Job 37: Subtask spark_cleanse_daily_sales
+[2026-03-24T19:02:51.408+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_spark_pipeline.spark_cleanse_daily_sales manual__2026-03-24T19:00:31.982886+00:00 [running]> on host 2006b063b9a3
+[2026-03-24T19:02:51.543+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='tori' AIRFLOW_CTX_DAG_ID='etl_spark_pipeline' AIRFLOW_CTX_TASK_ID='spark_cleanse_daily_sales' AIRFLOW_CTX_EXECUTION_DATE='2026-03-24T19:00:31.982886+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-24T19:00:31.982886+00:00'
+[2026-03-24T19:02:51.545+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-24T19:02:51.564+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-03-24T19:02:51.566+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'docker exec spark_master /opt/spark/bin/spark-submit /opt/spark/jobs/spark_cleanse.py daily_sales /opt/spark/data/raw/daily_sales.csv /opt/spark/data/cleaned/daily_sales']
+[2026-03-24T19:02:51.585+0000] {subprocess.py:86} INFO - Output:
+[2026-03-24T19:02:54.866+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-03-24T19:02:54.868+0000] {subprocess.py:93} INFO -   File "/opt/spark/jobs/spark_cleanse.py", line 4, in <module>
+[2026-03-24T19:02:54.873+0000] {subprocess.py:93} INFO -     from scripts.spark_utils import get_spark_session
+[2026-03-24T19:02:54.874+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'scripts'
+[2026-03-24T19:02:54.910+0000] {subprocess.py:93} INFO - 26/03/24 19:02:54 INFO ShutdownHookManager: Shutdown hook called
+[2026-03-24T19:02:54.919+0000] {subprocess.py:93} INFO - 26/03/24 19:02:54 INFO ShutdownHookManager: Deleting directory /tmp/spark-8be01e22-fd4e-4c27-9f57-55c7478970ba
+[2026-03-24T19:02:54.961+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-03-24T19:02:54.962+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-24T19:02:54.971+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-03-24T19:02:54.974+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_spark_pipeline, task_id=spark_cleanse_daily_sales, execution_date=20260324T190031, start_date=20260324T190251, end_date=20260324T190254
+[2026-03-24T19:02:54.983+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 37 for task spark_cleanse_daily_sales (Bash command failed. The command returned a non-zero exit code 1.; 567)
+[2026-03-24T19:02:55.003+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-03-24T19:02:55.024+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-24T19:02:55.026+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

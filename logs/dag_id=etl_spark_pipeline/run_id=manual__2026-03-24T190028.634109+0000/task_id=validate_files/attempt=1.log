@@ -1,0 +1,28 @@
+[2026-03-24T19:02:48.851+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-03-24T19:02:48.877+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_spark_pipeline.validate_files manual__2026-03-24T19:00:28.634109+00:00 [queued]>
+[2026-03-24T19:02:48.885+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_spark_pipeline.validate_files manual__2026-03-24T19:00:28.634109+00:00 [queued]>
+[2026-03-24T19:02:48.885+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 2
+[2026-03-24T19:02:48.896+0000] {taskinstance.py:2327} INFO - Executing <Task(BashOperator): validate_files> on 2026-03-24 19:00:28.634109+00:00
+[2026-03-24T19:02:48.902+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_spark_pipeline', 'validate_files', 'manual__2026-03-24T19:00:28.634109+00:00', '--job-id', '31', '--raw', '--subdir', 'DAGS_FOLDER/etl_spark_pipeline.py', '--cfg-path', '/tmp/tmpxpcs99ux']
+[2026-03-24T19:02:48.905+0000] {standard_task_runner.py:91} INFO - Job 31: Subtask validate_files
+[2026-03-24T19:02:48.904+0000] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=512) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-24T19:02:48.905+0000] {standard_task_runner.py:63} INFO - Started process 513 to run task
+[2026-03-24T19:02:48.950+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_spark_pipeline.validate_files manual__2026-03-24T19:00:28.634109+00:00 [running]> on host 2006b063b9a3
+[2026-03-24T19:02:49.021+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='tori' AIRFLOW_CTX_DAG_ID='etl_spark_pipeline' AIRFLOW_CTX_TASK_ID='validate_files' AIRFLOW_CTX_EXECUTION_DATE='2026-03-24T19:00:28.634109+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-24T19:00:28.634109+00:00'
+[2026-03-24T19:02:49.021+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-03-24T19:02:49.035+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-03-24T19:02:49.037+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'ls -lah /opt/airflow/data/raw']
+[2026-03-24T19:02:49.047+0000] {subprocess.py:86} INFO - Output:
+[2026-03-24T19:02:49.056+0000] {subprocess.py:93} INFO - total 43M
+[2026-03-24T19:02:49.056+0000] {subprocess.py:93} INFO - drwxrwxrwx 1 root    root  512 Mar 24 15:51 .
+[2026-03-24T19:02:49.056+0000] {subprocess.py:93} INFO - drwxrwxrwx 1 root    root  512 Mar 24 15:34 ..
+[2026-03-24T19:02:49.057+0000] {subprocess.py:93} INFO - -rw-r--r-- 1 airflow root  12M Mar 24 19:01 customers.csv
+[2026-03-24T19:02:49.057+0000] {subprocess.py:93} INFO - -rw-r--r-- 1 airflow root 6.6M Mar 24 19:02 daily_sales.csv
+[2026-03-24T19:02:49.057+0000] {subprocess.py:93} INFO - -rw-r--r-- 1 airflow root 9.6M Mar 24 19:02 products.csv
+[2026-03-24T19:02:49.058+0000] {subprocess.py:93} INFO - -rw-r--r-- 1 airflow root  15M Mar 24 19:02 suppliers.csv
+[2026-03-24T19:02:49.058+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-03-24T19:02:49.059+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-03-24T19:02:49.077+0000] {taskinstance.py:1205} INFO - Marking task as SUCCESS. dag_id=etl_spark_pipeline, task_id=validate_files, execution_date=20260324T190028, start_date=20260324T190248, end_date=20260324T190249
+[2026-03-24T19:02:49.120+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2026-03-24T19:02:49.141+0000] {taskinstance.py:3482} INFO - 4 downstream tasks scheduled from follow-on schedule check
+[2026-03-24T19:02:49.143+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
